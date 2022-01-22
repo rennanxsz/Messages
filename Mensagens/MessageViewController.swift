@@ -13,5 +13,11 @@ class MessageViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    override func changeColor(_ sender: UIButton) {
+        let colorPicker = storyboard?.instantiateViewController(withIdentifier: "ColorPickerViewController") as! ColorPickerViewController
+        colorPicker.modalPresentationStyle = .overCurrentContext
+        present(colorPicker, animated: true, completion: nil)
+    }
+    
 }
 

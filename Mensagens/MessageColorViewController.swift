@@ -13,6 +13,7 @@ class MessageColorViewController: BaseViewController{
         super.viewDidLoad()
         lbMessage.text = message.text
         lbMessage.textColor = message.textColor
+        lbMessage.backgroundColor = message.backgroundColor
         
     }
     
@@ -21,23 +22,12 @@ class MessageColorViewController: BaseViewController{
         vc .message = message
         
     }
-    
-    
-    override func changeColor(_ sender: UIButton) {
-        
-        let colorPicker = storyboard?.instantiateViewController(withIdentifier: "ColorPickerViewController") as! ColorPickerViewController
-        colorPicker.modalPresentationStyle = .overCurrentContext
-        colorPicker.reference = self
-        present(colorPicker, animated: true, completion: nil)
-        
-    }
-    
 }
 
-extension MessageColorViewController: ColorPickerProtocol{
+extension MessageColorViewController: ColorPickerDelegate{
     
     func applyColor(color: UIColor){
-        lbMessage.textColor = color
-        message.textColor = color
+        lbMessage.backgroundColor = color
+        message.backgroundColor = color
     }
 }
